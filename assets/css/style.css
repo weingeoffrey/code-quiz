@@ -22,7 +22,8 @@ body {
 }
 
 .start_btn,
-.start_box {
+.start_box,
+.quiz_box {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -85,7 +86,8 @@ body {
     padding: 10px 0 10px 0;
 }
 
-.start_box .buttons button {
+.start_box .buttons button,
+.answer {
     margin: 0 5px;
     height: 5vh;
     width: 10vw;
@@ -105,7 +107,111 @@ body {
 .buttons button.continue {
     color: var(--primary-color);
     background: var(--tertiary-color);
+    border-color: var(--primary-color);
 }
+
+.quiz_box {
+    display: none;
+    width: 50vw;
+    height: auto;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.quiz_box header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--primary-color);
+    height: auto;
+    padding: 10px;
+}
+
+.quiz_box .quiz_title {
+    text-align: center;
+    font-size: 1.25vw;
+    font-weight: 900;
+    padding: 10px;
+}
+
+.quiz_box .quiz_timer {
+    display: flex;
+    font-size: 1.25vw;
+    font-weight: 900;
+    background: var(--secondary-color);
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px;
+    align-items: center;
+
+}
+
+.quiz_box .quiz_timer .timer_text {
+    padding: 0 5px;
+}
+
+.quiz_box .quiz_timer .timer_seconds {
+    padding: 5px;
+    background: #fff;
+    border-radius: 5px;
+    color: var(--secondary-color);
+}
+
+.quiz_box section {
+    text-align: center;
+}
+
+.quiz_box .question {
+    font-size: 1.75vw;
+    padding: 1vh;
+}
+
+.quiz_box .answer_list {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border-bottom: 1px solid var(--primary-color);
+}
+
+.answer {
+    width: 100%;
+    margin: 0 0 5px;
+    font-weight: 600;
+    font-size: 1vw;
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+footer section {
+    margin: 5px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.exit,
+.next {
+    margin: 0 5px;
+    height: 5vh;
+    width: 10vw;
+    border: 1px solid transparent;
+    border-radius: 15px;
+    color: #fff;
+    font-size: 1.25vw;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.exit {
+    border-color: red;
+    color: red;
+}
+
+.next {
+    background: var(--tertiary-color);
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+}
+
 
 /* Custom Animation for Start button */
 @keyframes fade_in{
