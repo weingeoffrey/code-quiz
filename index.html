@@ -49,6 +49,35 @@
         </footer>
     </div>
 
+    <!-- High Score Box -->
+    <div class="highscore_box" id="#highscoreBox">
+        <header>
+            <h4 class="score_title">Coding Quiz Challenge (HTML/CSS/JS)</h4>
+            <p class="score_subtitle">High Scores!</p>
+        </header>
+        <section>
+            <div class="score_list" id="score_list">
+                <h3 class="userScore">Your Score: </h3>
+                <h3 class="userScore" id="userScore"></h3>
+            </div>
+            <div class="highscore_form">
+                <form method="POST">
+                    <label for='initials'>Initials</label>
+                    <input
+                     type="text"
+                     name="initials"
+                     placeholder="JD"
+                     id="initials"
+                    />
+                </form>
+                    <button id="btnSave">Save</button>
+                    <button id="btnRetake">Retake Quiz</button>
+                    <h3>Top 5 High Scores:</h3>
+                    <div id="highscores"></div>
+            </div>
+        </section>
+    </div>
+
     <script src="./assets/js/script.js"></script>
 </body>
 </html>

@@ -12,6 +12,10 @@ var startBoxEl = document.getElementById('start_box');
 var btnContinueEl = document.getElementById('continue');
 var btnExitEl = document.getElementById('exit');
 var quizBoxEl = document.getElementById('#quizBox');
+var highscoreBoxEl = document.getElementById('#highscoreBox');
+var userScoreEl = document.getElementById('userScore');
+var initialsEl = document.getElementById('initials');
+var highscorelistEl = document.getElementById('highscores');
 
 var quizQuestions = [
     { q: "What does HTML stand for?", a: "Hyper Text Markup Language", optionOne: "Hyper Text Markup Language", optionTwo: "Hyper Text Modul Language", optionThree: "Hyper Test Markup Language", optionFour: "Hyperlink Markup Language" },
@@ -55,6 +59,8 @@ function nextQuestion() {
         else {
             quizBoxEl = document.getElementById('#quizBox');
             quizBoxEl.style.display = "none";
+            highscoreBoxEl.style.display = "block";
+            userScoreEl.textContent = playerScore;
         }
     });
 }
@@ -185,6 +191,9 @@ function checkAnswer(btnOption) {
     }
 }
 
+var btnSaveEl = document.getElementById('btnSave')
+var scoreListEl = document.getElementById('score_list')
+
 // Checks to see if Start Button is clicked
 btnStartEl.addEventListener("click", function(){
     // Hides Start Button
@@ -207,6 +216,24 @@ loadQuestion();
 answerQuestion();
 nextQuestion();
 
+const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+console.log(highScores)
+
+btnSaveEl.addEventListener("click", function() {
+    const score = {
+        score: playerScore,
+        name: initialsEl.value
+    };
+    highScores.push(score);
+    highScores.sort((a, b) => b.score - a.score);
+    highScores.splice(5);
+    console.log(highScores);
+    highscorelistEl.innerHTML = "";
+    for (var i = 0; i < highScores.length; i++) {
+        highscorelistEl.innerHTML += '<h4>' + highScores[i].name + " " + highScores[i].score + '</h4>'
+    }
+    
+})
 
 
 
