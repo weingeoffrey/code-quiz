@@ -17,6 +17,7 @@ html, body {
 
 body {
     font-family: "Asap";
+    font-size: 1rem;
     background: rgb(2,0,36);
     background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 25%, var(--tertiary-color) 100%);
 }
@@ -32,7 +33,7 @@ body {
 
 /* Start Button Styling */
 .start_btn button {
-    font-size: 25px;
+    font-size: 2rem;
     font-weight: 500;
     color: var(--secondary-color);
     padding: 15px 30px;
@@ -50,24 +51,23 @@ body {
 /* Start Box Styling */
 .start_box {
     display: none;
-    width: 50vw;
-    height: auto;
+    width: 50%;
     background: #fff;
     border-radius: 10px;
 }
 
 .start_box .start_title {
     height: auto;
-    width: 100%;
     border-bottom: 1px solid var(--primary-color);
     text-align: center;
-    font-size: 4vw;
+    font-size: 3rem;
     font-weight: bold;
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .start_box .start_info {
-    font-size: 2.25vw;
+    font-size: 1.75rem;
     display: flex;
     flex: wrap;
     align-items: center;
@@ -94,7 +94,7 @@ body {
     border: 1px solid transparent;
     border-radius: 15px;
     color: #fff;
-    font-size: 1.25vw;
+    font-size: 1.25rem;
     font-weight: 500;
     cursor: pointer;
 }
@@ -129,14 +129,14 @@ body {
 
 .quiz_box .quiz_title {
     text-align: center;
-    font-size: 1.25vw;
+    font-size: 1.25rem;
     font-weight: 900;
     padding: 10px;
 }
 
 .quiz_box .quiz_timer {
     display: flex;
-    font-size: 1.25vw;
+    font-size: 1.25rem;
     font-weight: 900;
     background: var(--secondary-color);
     color: #fff;
@@ -162,7 +162,7 @@ body {
 }
 
 .quiz_box .question {
-    font-size: 1.75vw;
+    font-size: 1.75rem;
     padding: 1vh;
 }
 
@@ -177,9 +177,17 @@ body {
     width: 100%;
     margin: 0 0 5px;
     font-weight: 600;
-    font-size: 1vw;
     border-color: var(--secondary-color);
     color: var(--secondary-color);
+}
+
+.answer:disabled {
+    width: 100%;
+    margin: 0 0 5px;
+    font-weight: 600;
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.6;
 }
 
 footer section {
@@ -196,11 +204,16 @@ footer section {
     border: 1px solid transparent;
     border-radius: 15px;
     color: #fff;
-    font-size: 1.25vw;
+    font-size: 1.25rem;
     font-weight: 500;
     cursor: pointer;
 }
 
+.next:disabled {
+    pointer-events: none;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
 .exit {
     border-color: red;
     color: red;

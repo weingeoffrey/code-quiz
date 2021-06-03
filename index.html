@@ -7,25 +7,24 @@
     <title>Coding Quiz</title>
     <link href='https://fonts.googleapis.com/css?family=Asap' rel='stylesheet'>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </head>
 <body>
     <!-- Start Quiz Button -->
-    <div class="start_btn"><button>Start Quiz</button></div>
+    <div class="start_btn"><button id='start_btn'>Start Quiz</button></div>
 
     <!-- Quiz Start Box -->
-    <div class="start_box">
+    <div class="start_box" id='start_box'>
         <h2 class="start_title">Coding Quiz Challenge</h2>
         <p class="start_info">Try to answer the following code-related questions within the time limit.</p>
         <p class="start_info">Keep in mind that incorrect answers will penalize your score/time by 10 seconds</p>
         <section class="buttons">
-            <button class="quit">Exit Quiz</button>
-            <button class="continue">Continue</button>
+            <button class="quit" id='quit'>Exit Quiz</button>
+            <button class="continue" id='continue'>Continue</button>
         </section>
     </div>
 
     <!-- Quiz Box -->
-    <div class="quiz_box">
+    <div class="quiz_box" id="#quizBox">
         <header>
             <h4 class="quiz_title">Coding Quiz Challenge (HTML/CSS/JS)</h4>
             <div class="quiz_timer">
@@ -44,10 +43,12 @@
         </section>
         <footer>
             <section>
-                <button class="exit">Exit</button>
-                <button class="next">Next</button>
+                <button class="exit" id="#exit">Exit</button>
+                <button class="next" id="#next">Next</button>
             </section>
         </footer>
     </div>
+
+    <script src="./assets/js/script.js"></script>
 </body>
 </html>
