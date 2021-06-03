@@ -279,9 +279,10 @@ footer section {
     cursor: pointer;
 }
 
-.highscore_form h3 {
+.highscores {
     margin-top: 10px;
     border-bottom: 1px solid var(--primary-color);
+    text-align: center;
 }
 
 
