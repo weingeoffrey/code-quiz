@@ -121,6 +121,7 @@ body {
 
 .quiz_box header {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     border-bottom: 1px solid var(--primary-color);
@@ -194,10 +195,9 @@ body {
 footer section {
     margin: 5px;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
-.exit,
 .next {
     margin: 0 5px;
     height: 5vh;
@@ -215,10 +215,7 @@ footer section {
     cursor: not-allowed;
     opacity: 0.6;
 }
-.exit {
-    border-color: red;
-    color: red;
-}
+
 
 .next {
     background: var(--tertiary-color);
@@ -290,4 +287,20 @@ footer section {
 @keyframes fade_in{
     0% {opacity: 0;}
     100% {opacity: 1;}
+}
+
+@media screen and (max-width:768px) {
+    * {
+        font-size: 8px;
+    }
+    .start_box .buttons button {
+        width: 100%;
+    }
+    .next {
+        width: 100%;
+    }
+    .quiz_box header {
+        justify-content: center;
+        align-content: center;
+    }
 }

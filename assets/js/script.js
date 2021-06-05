@@ -2,7 +2,7 @@
 var btnStartEl = document.getElementById('start_btn');
 var startBoxEl = document.getElementById('start_box');
 var btnContinueEl = document.getElementById('continue');
-var btnExitEl = document.getElementById('exit');
+var btnExitEl = document.getElementById('quit');
 
 // Quiz Box Elements
 var quizBoxEl = document.getElementById('#quizBox');
@@ -23,6 +23,7 @@ var highscorelistEl = document.getElementById('highscores');
 var highscoreBoxEl = document.getElementById('#highscoreBox');
 var btnSaveEl = document.getElementById('btnSave')
 var scoreListEl = document.getElementById('score_list')
+var highscoreFormEl = document.getElementById('highscore_form')
 
 // Object array containing quiz questions
 var quizQuestions = [
@@ -75,104 +76,51 @@ function nextQuestion() {
     });
 }
 
+function scoreAdjustment(btnPressed) {
+    if (questionIndex < quizQuestions.length) {
+        // If answer is correct
+        if (checkAnswer(btnPressed)) {
+            // add 10 points to the user's score
+            playerScore = playerScore + 10;
+            // style the button to show correct answer
+            btnPressed.setAttribute('style', 'border-color: green; color: green; opacity: 1');
+            // disable all subsequent answer buttons to stop user from making multiple selections
+            for (var j = 0; j < btnAnswers.length; j++) {
+                btnAnswers[j].disabled = true;
+            }
+        }
+        // If answer is incorrect
+        else {
+            // decrement 10 seconds from the timer
+            timer = timer - 10;
+            // decrement 10 points fromt he user's score
+            playerScore = playerScore - 10;
+            // style the button to show incorrect answer
+            btnPressed.setAttribute('style', 'border-color: red; color: red; opacity: 1');
+            // disable all subsequent answer buttons to stop user from making multiple selections
+            for (var j = 0; j < btnAnswers.length; j++) {
+                btnAnswers[j].disabled = true;
+            }
+        }
+    }
+    else {
+        btnNext.disabled = true;
+    }
+};
+
 // Function to answer the question based off of which button the user selected and perform logic
 function answerQuestion(i) {
     btnOptOneEl.addEventListener("click", function(){
-        if (questionIndex < quizQuestions.length) {
-            // If answer is correct
-            if (checkAnswer(btnOptOneEl)) {
-                // add 10 points to the user's score
-                playerScore = playerScore + 10;
-                // style the button to show correct answer
-                btnOptOneEl.setAttribute('style', 'border-color: green; color: green; opacity: 1');
-                // disable all subsequent answer buttons to stop user from making multiple selections
-                for (var j = 0; j < btnAnswers.length; j++) {
-                    btnAnswers[j].disabled = true;
-                }
-            }
-            // If answer is incorrect
-            else {
-                // decrement 10 seconds from the timer
-                timer = timer - 10;
-                // decrement 10 points fromt he user's score
-                playerScore = playerScore - 10;
-                // style the button to show incorrect answer
-                btnOptOneEl.setAttribute('style', 'border-color: red; color: red; opacity: 1');
-                // disable all subsequent answer buttons to stop user from making multiple selections
-                for (var j = 0; j < btnAnswers.length; j++) {
-                    btnAnswers[j].disabled = true;
-                }
-            }
-        }
-        else {
-            btnNext.disabled = true;
-        }
+        scoreAdjustment(btnOptOneEl);
     });
     btnOptTwoEl.addEventListener("click", function(){
-        if (questionIndex < quizQuestions.length) {
-            if (checkAnswer(btnOptTwoEl)) {
-                playerScore = playerScore + 10;
-                btnOptTwoEl.setAttribute('style', 'border-color: green; color: green; opacity: 1');
-                for (var j = 0; j < btnAnswers.length; j++) {
-                    btnAnswers[j].disabled = true;
-                }
-            }
-            else {
-                timer = timer - 10;
-                playerScore = playerScore - 10;
-                btnOptTwoEl.setAttribute('style', 'border-color: red; color: red; opacity: 1');
-                for (var j = 0; j < btnAnswers.length; j++) {
-                    btnAnswers[j].disabled = true;
-                }
-            }
-        }
-        else {
-            btnNext.disabled = true;
-        }
+        scoreAdjustment(btnOptTwoEl);
     });
     btnOptThreeEl.addEventListener("click", function(){
-        if (questionIndex < quizQuestions.length) {
-            if (checkAnswer(btnOptThreeEl)) {
-                playerScore = playerScore + 10;
-                btnOptThreeEl.setAttribute('style', 'border-color: green; color: green; opacity: 1');
-                for (var j = 0; j < btnAnswers.length; j++) {
-                    btnAnswers[j].disabled = true;
-                }
-            }
-            else {
-                timer = timer - 10;
-                playerScore = playerScore - 10;
-                btnOptThreeEl.setAttribute('style', 'border-color: red; color: red; opacity: 1');
-                for (var j = 0; j < btnAnswers.length; j++) {
-                    btnAnswers[j].disabled = true;
-                }
-            }
-        }
-        else {
-            btnNext.disabled = true;
-        }
+        scoreAdjustment(btnOptThreeEl);
     });
     btnOptFourEl.addEventListener("click", function(){
-        if (questionIndex < quizQuestions.length) {
-            if (checkAnswer(btnOptFourEl)) {
-                playerScore = playerScore + 10;
-                btnOptFourEl.setAttribute('style', 'border-color: green; color: green; opacity: 1');
-                for (var j = 0; j < btnAnswers.length; j++) {
-                    btnAnswers[j].disabled = true;
-                }
-            }
-            else {
-                timer = timer - 10;
-                playerScore = playerScore - 10;
-                btnOptFourEl.setAttribute('style', 'border-color: red; color: red; opacity: 1');
-                for (var j = 0; j < btnAnswers.length; j++) {
-                    btnAnswers[j].disabled = true;
-                }
-            }
-        }
-        else {
-            btnNext.disabled = true;
-        }
+        scoreAdjustment(btnOptFourEl);
     });
 }
 
@@ -217,6 +165,17 @@ btnStartEl.addEventListener("click", function(){
     startBoxEl.style.display = "block";
 });
 
+// Check to see if Exit Quiz button is clicked
+btnExitEl.addEventListener("click", function(){
+    if (confirm("Are you sure you'd like to exit?")) {
+        // Hide Start Quiz Box
+        startBoxEl.style.display = "none";
+
+        // Display Start Button again
+        btnStartEl.style.display = "block";
+    }
+});
+
 // Checks to see if the Continue button is clicked
 btnContinueEl.addEventListener("click", function(){
     // Hides Start Quiz Box
@@ -227,7 +186,7 @@ btnContinueEl.addEventListener("click", function(){
 
     // Start Countdown
     countdown();
-})
+});
 
 // Load initial question
 loadQuestion();
@@ -239,7 +198,20 @@ answerQuestion();
 nextQuestion();
 
 // Get localStorage array for highscores
-const highScores = JSON.parse(localStorage.getItem("highScores")) || [];
+const highScores =  JSON.parse(localStorage.getItem("highScores")) || [];
+
+// Sort high score object variable from high to low
+highScores.sort((a, b) => b.score - a.score);
+
+// Only show top 5 high scores
+highScores.splice(5);
+
+// Output the high scores
+for (var i = 0; i < highScores.length; i++) {
+    highscorelistEl.innerHTML += '<h4 style="text-align: center">' + highScores[i].name + " " + highScores[i].score + '</h4>'
+}
+
+console.log(highScores);
 
 // Wait for Save button click
 btnSaveEl.addEventListener("click", function() {
@@ -250,16 +222,27 @@ btnSaveEl.addEventListener("click", function() {
     };
     // Add player's score to highscores object variable
     highScores.push(score);
+    console.log(highScores);
+
+    localStorage.setItem('highScores', JSON.stringify(highScores));
+
     // Sort high score object variable from high to low
     highScores.sort((a, b) => b.score - a.score);
+
     // Only show top 5 high scores
     highScores.splice(5);
+
     // Clear highscorelistEl
     highscorelistEl.innerHTML = "";
+
     // Output the high scores
     for (var i = 0; i < highScores.length; i++) {
         highscorelistEl.innerHTML += '<h4 style="text-align: center">' + highScores[i].name + " " + highScores[i].score + '</h4>'
     }
+
+    // Hide the highscore_form so no further scores can be inputted
+    highscoreFormEl.style.display = "none";
+
 })
 
 
