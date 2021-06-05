@@ -12,3 +12,4 @@ A basic quiz that provides the user multiple choice questions and displays if th
 https://weingeoffrey.github.io/code-quiz/
 
 ## Screenshots/Gifs
+>><img src="./assets/images/quiz-showcase.gif" width="956" height="469" />
